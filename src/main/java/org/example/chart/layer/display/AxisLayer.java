@@ -1,13 +1,21 @@
 package org.example.chart.layer.display;
 
 import javax.swing.*;
-import java.awt.*;
 
 abstract class AxisLayer extends JPanel {
-    public AxisLayer() {
+
+    private final DisplayLayer displayLayer;
+
+    public AxisLayer(DisplayLayer displayLayer) {
+        this.displayLayer = displayLayer;
         this.setLayout(null);
-        setUp();
+        this.setOpaque(false);
+        setUpComponent();
     }
 
-    protected abstract void setUp();
+    protected abstract void setUpComponent();
+
+    public DisplayLayer getDisplayLayer() {
+        return displayLayer;
+    }
 }

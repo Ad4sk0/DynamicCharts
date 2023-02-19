@@ -1,13 +1,19 @@
 package org.example.chart.layer.display;
 
 import javax.swing.*;
-import java.awt.*;
 
 abstract class BackgroundLayer extends JPanel {
-    public BackgroundLayer() {
+    private final DisplayLayer displayLayer;
+
+    public BackgroundLayer(DisplayLayer displayLayer) {
+        this.displayLayer = displayLayer;
         this.setLayout(null);
         setUp();
     }
 
     protected abstract void setUp();
+
+    public DisplayLayer getDisplayLayer() {
+        return displayLayer;
+    }
 }

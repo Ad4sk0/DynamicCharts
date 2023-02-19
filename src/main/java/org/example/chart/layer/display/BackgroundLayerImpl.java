@@ -1,9 +1,12 @@
 package org.example.chart.layer.display;
 
-import java.awt.*;
 
 class BackgroundLayerImpl extends BackgroundLayer {
+
+    public BackgroundLayerImpl(DisplayLayer displayLayer) {
+        super(displayLayer);
+    }
+
     protected void setUp() {
-        this.setBackground(Color.RED);
     }
 }
