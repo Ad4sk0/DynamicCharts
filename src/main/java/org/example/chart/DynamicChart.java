@@ -9,15 +9,15 @@ import org.example.chart.layer.display.DisplayLayer;
 import javax.swing.*;
 import java.awt.*;
 
-public class Chart extends JPanel {
+public abstract class DynamicChart extends JPanel {
     private final DataLayer dataLayer;
     private final DisplayLayer displayLayer;
     private final ControlLayer controlLayer;
 
-    public Chart() {
-        this.dataLayer = new DataLayerImpl();
-        this.displayLayer = new DisplayLayer();
-        this.controlLayer = new ControlLayerImpl();
+    public DynamicChart() {
+        this.dataLayer = new DataLayerImpl(this);
+        this.displayLayer = new DisplayLayer(this);
+        this.controlLayer = new ControlLayerImpl(this);
         setUpComponent();
     }
 
@@ -26,4 +26,7 @@ public class Chart extends JPanel {
         this.add(displayLayer);
         this.setOpaque(false);
     }
+
+
+
 }

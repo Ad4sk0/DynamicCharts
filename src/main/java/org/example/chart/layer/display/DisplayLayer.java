@@ -1,15 +1,19 @@
 package org.example.chart.layer.display;
 
+import org.example.chart.DynamicChart;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class DisplayLayer extends JLayeredPane {
+    private final DynamicChart chart;
     private final BackgroundLayer backgroundLayer;
     private final DrawingAreaLayer drawingAreaLayer;
     private final AxisLayer axisLayer;
     private final DataDisplayLayer dataDisplayLayer;
 
-    public DisplayLayer() {
+    public DisplayLayer(DynamicChart dynamicChart) {
+        this.chart = dynamicChart;
         this.backgroundLayer = new BackgroundLayerImpl(this);
         this.drawingAreaLayer = new DrawingAreaLayerImpl(this);
         this.dataDisplayLayer = new DataDisplayLayerImpl(this);
