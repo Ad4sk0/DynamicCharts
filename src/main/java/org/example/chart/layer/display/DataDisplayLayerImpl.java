@@ -1,14 +1,15 @@
 package org.example.chart.layer.display;
 
+import org.example.chart.layer.data.DataLayer;
+
 import java.awt.*;
 
 class DataDisplayLayerImpl extends DataDisplayLayer {
-    public DataDisplayLayerImpl(DisplayLayer displayLayer) {
-        super(displayLayer);
+    public DataDisplayLayerImpl(DisplayLayer displayLayer, DataLayer dataLayer) {
+        super(displayLayer, dataLayer);
     }
 
     protected void setUp() {
-        this.setOpaque(false);
     }
 
     @Override

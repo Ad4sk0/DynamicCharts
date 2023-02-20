@@ -1,21 +1,35 @@
 package org.example.chart.layer.display;
 
+import org.example.chart.layer.data.DataLayer;
+
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 abstract class Axis extends JPanel {
 
-    protected int xMargin;
-    protected int yMargin;
-    protected int thickness;
-    protected Color color;
-
-    public Axis(int xMargin, int yMargin) {
-        this.xMargin = xMargin;
-        this.yMargin = yMargin;
-        this.thickness = 3;
+    protected final DataLayer dataLayer;
+    protected final DataDisplayLayer dataDisplayLayer;
+    protected final DrawingAreaLayer drawingAreaLayer;
+    protected int thickness = 3;
+    protected Color color = Color.BLACK;
+    protected int ticksSpacing = 50;
+    protected int labelSpacing = 10;
+    protected int tickHeight = 5;
+    protected int tickThickness = 1;
+    protected Color tickColor;
+    protected DecimalFormat tickLabelFormat = new DecimalFormat("0.0");
+    protected final Map<Double, Double> ticksMap;
+    
+    public Axis(DataLayer dataLayer, DataDisplayLayer dataDisplayLayer, DrawingAreaLayer drawingAreaLayer) {
+        this.dataLayer = dataLayer;
+        this.dataDisplayLayer = dataDisplayLayer;
+        this.drawingAreaLayer = drawingAreaLayer;
         this.setLayout(null);
         this.setOpaque(false);
+        ticksMap = new HashMap<>();
         setUpComponent();
     }
 
@@ -29,22 +43,6 @@ abstract class Axis extends JPanel {
     protected abstract void drawAxis(Graphics2D g2);
 
     protected abstract void setUpComponent();
-
-    public int getXMargin() {
-        return xMargin;
-    }
-
-    public void setXMargin(int xPos) {
-        this.xMargin = xPos;
-    }
-
-    public int getYMargin() {
-        return yMargin;
-    }
-
-    public void setYMargin(int yPos) {
-        this.yMargin = yPos;
-    }
 
     public int getThickness() {
         return thickness;
