@@ -13,6 +13,7 @@ abstract class Axis extends JPanel {
     protected final DataLayer dataLayer;
     protected final DataDisplayLayer dataDisplayLayer;
     protected final DrawingAreaLayer drawingAreaLayer;
+    protected final Map<Double, Double> ticksMap;
     protected Point axisLocation = new Point();
     protected Dimension axisSize = new Dimension();
     protected int thickness = 3;
@@ -22,8 +23,7 @@ abstract class Axis extends JPanel {
     protected int tickHeight = 5;
     protected int tickThickness = 1;
     protected Color tickColor;
-    protected DecimalFormat tickLabelFormat = new DecimalFormat("0.0");
-    protected final Map<Double, Double> ticksMap;
+    protected DecimalFormat tickLabelFormat = new DecimalFormat("0.00");
 
     public Axis(DataLayer dataLayer, DataDisplayLayer dataDisplayLayer, DrawingAreaLayer drawingAreaLayer) {
         this.dataLayer = dataLayer;

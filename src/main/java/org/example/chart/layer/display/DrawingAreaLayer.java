@@ -2,7 +2,7 @@ package org.example.chart.layer.display;
 
 import javax.swing.*;
 
-abstract class DrawingAreaLayer extends JPanel {
+abstract class DrawingAreaLayer extends JLayeredPane {
     private final DisplayLayer displayLayer;
 
     public DrawingAreaLayer(DisplayLayer displayLayer) {

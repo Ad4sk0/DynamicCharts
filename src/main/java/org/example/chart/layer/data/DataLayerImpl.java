@@ -1,22 +1,17 @@
 package org.example.chart.layer.data;
 
-import org.example.chart.DynamicChart;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataLayerImpl implements DataLayer {
-
-    private final DynamicChart chart;
     private final AxisData xAxis;
     private final AxisData yAxis;
 
     private final List<DataUpdateListener> listeners;
 
-    public DataLayerImpl(DynamicChart dynamicChart) {
+    public DataLayerImpl() {
         xAxis = new AxisDataImpl();
         yAxis = new AxisDataImpl();
-        chart = dynamicChart;
         listeners = new ArrayList<>();
     }
 

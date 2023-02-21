@@ -4,6 +4,8 @@ import org.example.chart.ChartPanel;
 import org.example.chart.DynamicChart;
 import org.example.chart.layer.control.ControlLayer;
 import org.example.chart.layer.control.ControlLayerImpl;
+import org.example.chart.layer.control.controller.DrawingAreaMouseListener;
+import org.example.chart.layer.control.controller.DrawingAreaMouseMotionListener;
 import org.example.chart.layer.data.DataLayer;
 import org.example.chart.layer.data.DataLayerImpl;
 import org.example.chart.layer.display.DisplayLayer;
@@ -17,10 +19,11 @@ public class LineChart extends ChartPanel implements DynamicChart {
     private final ControlLayer controlLayer;
 
     public LineChart() {
-        dataLayer = new DataLayerImpl(this);
-        displayLayer = new DisplayLayer(this);
-        controlLayer = new ControlLayerImpl(this);
+        dataLayer = new DataLayerImpl();
+        displayLayer = new DisplayLayer(dataLayer);
+        controlLayer = new ControlLayerImpl(displayLayer);
         dataLayer.addListener(displayLayer);
+        displayLayer.addDrawingAreaMouseListeners(new DrawingAreaMouseListener(controlLayer), new DrawingAreaMouseMotionListener(controlLayer));
         setupComponent();
     }
 

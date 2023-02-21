@@ -1,5 +1,9 @@
 package org.example.chart.layer.control;
 
-public interface ControlLayer {
+import java.awt.*;
 
+public interface ControlLayer {
+    void moveMouseInDrawingArea(Point point);
+
+    void moveMouseOutsideDrawingArea(Point point);
 }
