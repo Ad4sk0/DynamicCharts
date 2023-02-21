@@ -17,7 +17,7 @@ class YAxisImpl extends Axis {
         double tickValueStep = dataLayer.getYAmplitude() / (double) ticksNumber;
         for (int i = 1; i < ticksNumber; i++) {
             double tickValue = dataLayer.getYMinValue() + tickValueStep * i;
-            ticksMap.put(tickValue, getHeight() - dataDisplayLayer.getYPosition(tickValue));
+            ticksMap.put(tickValue, dataDisplayLayer.getYPosition(tickValue));
         }
     }
 
