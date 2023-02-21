@@ -22,10 +22,15 @@ class AxisLayerImpl extends AxisLayer {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        xAxis.setLocation(drawingAreaLayer.getX(), getY());
-        yAxis.setLocation(getX(), drawingAreaLayer.getY());
-        xAxis.setSize(drawingAreaLayer.getWidth(), getHeight());
-        yAxis.setSize(getWidth(), drawingAreaLayer.getHeight());
+        xAxis.setLocation(getX(), getY());
+        yAxis.setLocation(getX(), getY());
+        xAxis.setSize(getWidth(), getHeight());
+        yAxis.setSize(getWidth(), getWidth());
+
+        xAxis.setAxisLocation(drawingAreaLayer.getX(), drawingAreaLayer.getY() + drawingAreaLayer.getHeight());
+        xAxis.setAxisSize(drawingAreaLayer.getWidth(), drawingAreaLayer.getHeight());
+        yAxis.setAxisLocation(drawingAreaLayer.getX(), drawingAreaLayer.getY());
+        yAxis.setAxisSize(drawingAreaLayer.getWidth(), drawingAreaLayer.getHeight());
     }
 
     @Override

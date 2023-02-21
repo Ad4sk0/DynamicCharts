@@ -11,24 +11,28 @@ class YAxisImpl extends Axis {
         super(dataLayer, dataDisplayLayer, drawingAreaLayer);
     }
 
+    private double getYPosition(double value) {
+        return axisLocation.y + dataDisplayLayer.getYPosition(value);
+    }
+
     private void generateTicks() {
         ticksMap.clear();
-        int ticksNumber = getHeight() / ticksSpacing;
+        int ticksNumber = axisSize.height / ticksSpacing;
         double tickValueStep = dataLayer.getYAmplitude() / (double) ticksNumber;
-        for (int i = 1; i < ticksNumber; i++) {
+        for (int i = 0; i <= ticksNumber; i++) {
             double tickValue = dataLayer.getYMinValue() + tickValueStep * i;
-            ticksMap.put(tickValue, dataDisplayLayer.getYPosition(tickValue));
+            ticksMap.put(tickValue, getYPosition(tickValue));
         }
     }
 
-    private void drawTicks(Graphics2D g2, int x) {
-        double xStart = x - tickHeight;
+    private void drawTicks(Graphics2D g2) {
+        double xStart = axisLocation.x - tickHeight;
         g2.setStroke(new BasicStroke(tickThickness));
         g2.setColor(tickColor);
         for (var entry : ticksMap.entrySet()) {
             double value = entry.getKey();
             double yPixel = entry.getValue();
-            g2.draw(new Line2D.Double(xStart, yPixel, x, yPixel));
+            g2.draw(new Line2D.Double(xStart, yPixel, axisLocation.x, yPixel));
             drawTickLabel(value, g2, yPixel, xStart);
         }
     }
@@ -46,10 +50,9 @@ class YAxisImpl extends Axis {
     protected void drawAxis(Graphics2D g2) {
         g2.setStroke(new BasicStroke(thickness));
         g2.setColor(color);
-        int xPosition = drawingAreaLayer.getXMargin();
-        g2.drawLine(xPosition, 0, xPosition, getHeight());
+        g2.drawLine(axisLocation.x, axisLocation.y, axisLocation.x, axisLocation.y + axisSize.height);
         generateTicks();
-        drawTicks(g2, xPosition);
+        drawTicks(g2);
     }
 
     @Override

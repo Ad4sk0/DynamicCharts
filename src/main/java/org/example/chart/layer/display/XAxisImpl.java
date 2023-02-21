@@ -4,9 +4,6 @@ import org.example.chart.layer.data.DataLayer;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 class XAxisImpl extends Axis {
 
@@ -14,24 +11,28 @@ class XAxisImpl extends Axis {
         super(dataLayer, dataDisplayLayer, drawingAreaLayer);
     }
 
+    private double getXPosition(double value) {
+        return axisLocation.x + dataDisplayLayer.getXPosition(value);
+    }
+
     private void generateTicks() {
         ticksMap.clear();
-        int ticksNumber = getWidth() / ticksSpacing;
+        int ticksNumber = axisSize.width / ticksSpacing;
         double tickValueStep = dataLayer.getXAmplitude() / (double) ticksNumber;
         for (int i = 1; i < ticksNumber; i++) {
             double tickValue = dataLayer.getXMinValue() + tickValueStep * i;
-            ticksMap.put(tickValue, dataDisplayLayer.getXPosition(tickValue));
+            ticksMap.put(tickValue, getXPosition(tickValue));
         }
     }
 
-    private void drawTicks(Graphics2D g2, int y) {
-        double yStart = y - tickHeight;
+    private void drawTicks(Graphics2D g2) {
+        double yStart = axisLocation.y - tickHeight;
         g2.setStroke(new BasicStroke(tickThickness));
         g2.setColor(tickColor);
         for (var entry : ticksMap.entrySet()) {
             double value = entry.getKey();
             double xPixel = entry.getValue();
-            g2.draw(new Line2D.Double(xPixel, yStart, xPixel, y));
+            g2.draw(new Line2D.Double(xPixel, yStart, xPixel, axisLocation.y));
             drawTickLabel(value, g2, xPixel, yStart);
         }
     }
@@ -48,10 +49,9 @@ class XAxisImpl extends Axis {
     protected void drawAxis(Graphics2D g2) {
         g2.setStroke(new BasicStroke(thickness));
         g2.setColor(color);
-        int yPosition = getHeight() - drawingAreaLayer.getYMargin();
-        g2.drawLine(0, yPosition, getWidth(), yPosition);
+        g2.drawLine(axisLocation.x, axisLocation.y, axisLocation.x + axisSize.width, axisLocation.y);
         generateTicks();
-        drawTicks(g2, yPosition);
+        drawTicks(g2);
     }
 
     @Override
