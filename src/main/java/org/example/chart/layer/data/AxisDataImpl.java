@@ -2,7 +2,7 @@ package org.example.chart.layer.data;
 
 import java.util.Arrays;
 
-public class AxisDataImpl implements AxisData {
+class AxisDataImpl implements AxisData {
     private double[] values = new double[0];
     private double minValue = 0;
     private double maxValue = 0;

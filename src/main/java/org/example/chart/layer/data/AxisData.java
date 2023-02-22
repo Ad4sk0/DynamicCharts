@@ -1,6 +1,6 @@
 package org.example.chart.layer.data;
 
-public interface AxisData {
+interface AxisData {
     void updateData(double[] values);
 
     double[] getValues();
