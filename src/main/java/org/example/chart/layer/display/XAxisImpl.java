@@ -7,12 +7,12 @@ import java.awt.geom.Line2D;
 
 class XAxisImpl extends Axis {
 
-    public XAxisImpl(DataLayer dataLayer, DataDisplayLayer dataDisplayLayer, DrawingAreaLayer drawingAreaLayer) {
-        super(dataLayer, dataDisplayLayer, drawingAreaLayer);
+    public XAxisImpl(DisplayLayer displayLayer, DataLayer dataLayer) {
+        super(displayLayer, dataLayer);
     }
 
     private double getXPosition(double value) {
-        return axisLocation.x + dataDisplayLayer.getXPosition(value);
+        return axisLocation.x + displayLayer.getXPosition(value);
     }
 
     private void generateTicks() {

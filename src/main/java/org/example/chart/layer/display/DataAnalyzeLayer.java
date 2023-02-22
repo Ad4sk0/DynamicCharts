@@ -9,8 +9,6 @@ abstract class DataAnalyzeLayer extends JPanel {
 
     protected final DisplayLayer displayLayer;
     protected final DataLayer dataLayer;
-    protected final DrawingAreaLayer drawingAreaLayer;
-    protected final DataDisplayLayer dataDisplayLayer;
     protected Color indicatorColor = Color.ORANGE;
     protected int indicatorThickness = 3;
     protected Stroke indicatorStroke = new BasicStroke(indicatorThickness, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{10}, 1);
@@ -20,8 +18,6 @@ abstract class DataAnalyzeLayer extends JPanel {
     public DataAnalyzeLayer(DisplayLayer displayLayer, DataLayer dataLayer) {
         this.displayLayer = displayLayer;
         this.dataLayer = dataLayer;
-        this.drawingAreaLayer = displayLayer.getDrawingAreaLayer();
-        this.dataDisplayLayer = displayLayer.getDataDisplayLayer();
         this.setLayout(null);
         this.setOpaque(false);
         setUp();

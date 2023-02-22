@@ -13,8 +13,8 @@ class AxisLayerImpl extends AxisLayer {
     public AxisLayerImpl(DisplayLayer displayLayer, DataLayer dataLayer) {
         super(displayLayer, dataLayer);
         drawingAreaLayer = displayLayer.getDrawingAreaLayer();
-        xAxis = new XAxisImpl(dataLayer, displayLayer.getDataDisplayLayer(), drawingAreaLayer);
-        yAxis = new YAxisImpl(dataLayer, displayLayer.getDataDisplayLayer(), drawingAreaLayer);
+        xAxis = new XAxisImpl(displayLayer, dataLayer);
+        yAxis = new YAxisImpl(displayLayer, dataLayer);
         this.add(xAxis);
         this.add(yAxis);
     }
@@ -25,7 +25,7 @@ class AxisLayerImpl extends AxisLayer {
         xAxis.setLocation(getX(), getY());
         yAxis.setLocation(getX(), getY());
         xAxis.setSize(getWidth(), getHeight());
-        yAxis.setSize(getWidth(), getWidth());
+        yAxis.setSize(getWidth(), getHeight());
 
         xAxis.setAxisLocation(drawingAreaLayer.getX(), drawingAreaLayer.getY() + drawingAreaLayer.getHeight());
         xAxis.setAxisSize(drawingAreaLayer.getWidth(), drawingAreaLayer.getHeight());

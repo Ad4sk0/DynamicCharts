@@ -1,13 +1,13 @@
 package org.example.chart.layer.display;
 
-import org.example.chart.layer.data.DataLayer;
+import org.example.chart.layer.data.DataSet;
 
 import java.awt.*;
 import java.awt.geom.Path2D;
 
 class DataDisplayLayerImpl extends DataDisplayLayer {
-    public DataDisplayLayerImpl(DisplayLayer displayLayer, DataLayer dataLayer) {
-        super(displayLayer, dataLayer);
+    public DataDisplayLayerImpl(DisplayLayer displayLayer, DataSet dataSet) {
+        super(displayLayer, dataSet);
     }
 
     protected void setUp() {
@@ -17,8 +17,8 @@ class DataDisplayLayerImpl extends DataDisplayLayer {
         int pointsNumber = Math.min(xArray.length, yArray.length);
         Path2D path2D = new Path2D.Double();
         for (int i = 0; i < pointsNumber; i++) {
-            double x = getXPosition(xArray[i]);
-            double y = getYPosition(yArray[i]);
+            double x = displayLayer.getXPosition(xArray[i]);
+            double y = displayLayer.getYPosition(yArray[i]);
             if (i == 0) {
                 path2D.moveTo(x, y);
             } else {
@@ -34,6 +34,6 @@ class DataDisplayLayerImpl extends DataDisplayLayer {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(drawingThickness));
         g2.setColor(drawingColor);
-        drawLine(g2, dataLayer.getXValues(), dataLayer.getYValues());
+        drawLine(g2, dataSet.getXValues(), dataSet.getYValues());
     }
 }

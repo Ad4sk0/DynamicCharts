@@ -7,12 +7,12 @@ import java.awt.geom.Line2D;
 
 class YAxisImpl extends Axis {
 
-    public YAxisImpl(DataLayer dataLayer, DataDisplayLayer dataDisplayLayer, DrawingAreaLayer drawingAreaLayer) {
-        super(dataLayer, dataDisplayLayer, drawingAreaLayer);
+    public YAxisImpl(DisplayLayer displayLayer, DataLayer dataLayer) {
+        super(displayLayer, dataLayer);
     }
 
     private double getYPosition(double value) {
-        return axisLocation.y + dataDisplayLayer.getYPosition(value);
+        return axisLocation.y + displayLayer.getYPosition(value);
     }
 
     private void generateTicks() {

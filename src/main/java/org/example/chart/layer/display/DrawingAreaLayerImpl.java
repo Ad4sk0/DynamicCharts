@@ -1,5 +1,7 @@
 package org.example.chart.layer.display;
 
+import org.example.chart.layer.data.DataLayer;
+
 import javax.swing.*;
 import java.awt.*;
 

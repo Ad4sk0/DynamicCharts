@@ -1,13 +1,14 @@
 package org.example.chart.layer.data;
 
-import java.util.Map;
+public interface DataSet {
 
-public interface DataLayer {
-    DataSet addDataSet(String dataSetId);
+    String getId();
+
     void updateData(double[] x, double[] y);
-    void updateData(String dataSetId, double[] x, double[] y);
 
     void addListener(DataUpdateListener dataUpdateListener);
+
+    double[] getXValues();
 
     double getXMinValue();
 
@@ -15,11 +16,11 @@ public interface DataLayer {
 
     double getXAmplitude();
 
+    double[] getYValues();
+
     double getYMinValue();
 
     double getYMaxValue();
 
     double getYAmplitude();
-
-    Map<String, DataSet> getDataSetMap();
 }

@@ -21,5 +21,11 @@ public class Main {
             y[i] = Math.sin(x[i]);
         }
         chart.updateData(x, y);
+
+        String secondDataSetId = "2";
+        chart.addDataSet(secondDataSetId);
+        double[] x2 = new double[]{0, 1, 2, 3, 4, 5};
+        double[] y2 = new double[]{1, 3, 4, 2, 1, 2};
+        chart.updateData(secondDataSetId, x2, y2);
     }
 }

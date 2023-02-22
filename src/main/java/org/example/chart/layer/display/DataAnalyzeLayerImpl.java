@@ -33,8 +33,8 @@ class DataAnalyzeLayerImpl extends DataAnalyzeLayer {
 
     private void drawValue(Graphics2D g2, Point point) {
         g2.setColor(labelColor);
-        double xValue = dataDisplayLayer.getXValueByPosition(point.x);
-        double yValue = dataDisplayLayer.getYValueByPosition(point.y);
+        double xValue = displayLayer.getXValueByPosition(point.x);
+        double yValue = displayLayer.getYValueByPosition(point.y);
         String label = String.format("(%.2f,%.2f)", xValue, yValue);
         double x = point.x + labelSpacing;
         double y = point.y - labelSpacing;
